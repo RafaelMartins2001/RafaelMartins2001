@@ -10,8 +10,8 @@ const props =['name', 'id', 'url'];
 const ATLAS_CLIENT_ID = process.env['ATLAS_CLIENT_ID']
 
 
-function getWithExplicitPromises() {
-return fetch(`https://api.boardgameatlas.com/api/lists?username=trentellingsen&client_id=${ATLAS_CLIENT_ID}`) // p1
+function getWithExplicitPromises(url) {
+return fetch(`${url}${ATLAS_CLIENT_ID}`) // p1
 	.then(res => {
 		console.log(res.status, res.statusText);
 		return res.text(); // p6
@@ -29,5 +29,6 @@ return fetch(`https://api.boardgameatlas.com/api/lists?username=trentellingsen&c
 		console.log(err);
 	}) // p5
 }
+const url = 'https://api.boardgameatlas.com/api/lists?username=trentellingsen&client_id=';
 
-getWithExplicitPromises();
+getWithExplicitPromises(url);

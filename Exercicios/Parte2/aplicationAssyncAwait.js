@@ -10,10 +10,10 @@ const props =['name', 'id', 'url'];
 const ATLAS_CLIENT_ID = process.env['ATLAS_CLIENT_ID']
     
 
-async function getWithAsyncAwait() {
+async function getWithAsyncAwait(url) {
 	try {
 		const res = await fetch(
-			`https://api.boardgameatlas.com/api/lists?username=trentellingsen&client_id=${ATLAS_CLIENT_ID}`
+			`${url}${ATLAS_CLIENT_ID}`
 		);
 		if (res.status === 200) {		
 			console.log(res.status, res.statusText);
@@ -30,4 +30,6 @@ async function getWithAsyncAwait() {
 		console.log("[CATCH]", err);
 	}
 }
-getWithAsyncAwait();
+
+const url = 'https://api.boardgameatlas.com/api/lists?username=trentellingsen&client_id=';
+getWithAsyncAwait(url);
